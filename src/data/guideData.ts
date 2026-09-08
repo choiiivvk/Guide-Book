@@ -109,6 +109,14 @@ export const INITIAL_TODOS: TodoItem[] = [
     dueDate: '입사 당일 오전'
   },
   {
+    id: 'd1-5',
+    category: 'day1',
+    title: '본인 주소 입력 및 웰컴 키트 배송지 등록',
+    description: '회사에서 발송하는 웰컴 키트 및 기념품 수령을 위한 자택 주소를 입력해주세요.',
+    completed: false,
+    dueDate: '입사 당일 오후'
+  },
+  {
     id: 'd1-2',
     category: 'day1',
     title: 'IT 장비 지급 및 계정 세팅',

@@ -24,6 +24,19 @@ export const TodoList: React.FC<{
   const [newDueDate, setNewDueDate] = useState('');
   const [isAdding, setIsAdding] = useState(false);
 
+  const [userAddress, setUserAddress] = useState<string>(() => {
+    return localStorage.getItem('onboarding_user_address') || '';
+  });
+  const [isEditingAddress, setIsEditingAddress] = useState<boolean>(false);
+  const [tempAddress, setTempAddress] = useState<string>(userAddress);
+
+  const handleSaveAddress = (e: React.FormEvent) => {
+    e.preventDefault();
+    setUserAddress(tempAddress);
+    localStorage.setItem('onboarding_user_address', tempAddress);
+    setIsEditingAddress(false);
+  };
+
   useEffect(() => {
     localStorage.setItem('onboarding_todos', JSON.stringify(todos));
     const completed = todos.filter(t => t.completed).length;
@@ -279,6 +292,48 @@ export const TodoList: React.FC<{
                     <p className={`text-sm mt-1 leading-relaxed ${todo.completed ? 'text-slate-400' : 'text-slate-600'}`}>
                       {todo.description}
                     </p>
+                  )}
+                  {todo.title.includes('주소') && (
+                    <div className="mt-3 pt-3 border-t border-slate-100" onClick={(e) => e.stopPropagation()}>
+                      {userAddress && !isEditingAddress ? (
+                        <div className="flex items-center justify-between bg-emerald-50/70 border border-emerald-200 p-2.5 rounded-xl text-xs text-emerald-900">
+                          <span>📍 입력된 배송지: <strong>{userAddress}</strong></span>
+                          <button
+                            type="button"
+                            onClick={() => { setTempAddress(userAddress); setIsEditingAddress(true); }}
+                            className="text-emerald-700 underline font-medium hover:text-emerald-900"
+                          >
+                            수정
+                          </button>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleSaveAddress} className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder="도로명 주소를 입력해주세요 (예: 서울시 강남구 테헤란로 123)"
+                            value={tempAddress}
+                            onChange={(e) => setTempAddress(e.target.value)}
+                            className="flex-1 px-3 py-1.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500/20 bg-white"
+                            required
+                          />
+                          <button
+                            type="submit"
+                            className="px-3 py-1.5 rounded-xl bg-amber-600 text-white text-xs font-medium hover:bg-amber-700 shadow-xs"
+                          >
+                            주소 저장
+                          </button>
+                          {isEditingAddress && (
+                            <button
+                              type="button"
+                              onClick={() => setIsEditingAddress(false)}
+                              className="px-2 py-1.5 rounded-xl bg-slate-100 text-slate-600 text-xs"
+                            >
+                              취소
+                            </button>
+                          )}
+                        </form>
+                      )}
+                    </div>
                   )}
                 </div>
 
