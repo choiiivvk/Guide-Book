@@ -1,0 +1,6 @@
+{
+  "name": "신규입사자 가이드북",
+  "description": "신규 입사자를 위한 회사 안내, 서울사무소 안내 및 온보딩 체크리스트 가이드북 프로그램",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
