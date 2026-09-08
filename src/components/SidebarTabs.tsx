@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabType } from '../types';
-import { Building2, MapPin, CheckSquare, HelpCircle } from 'lucide-react';
+import { Building2, MapPin, CheckSquare, HelpCircle, Database } from 'lucide-react';
 
 interface SidebarTabsProps {
   activeTab: TabType;
@@ -41,6 +41,14 @@ export const SidebarTabs: React.FC<SidebarTabsProps> = ({
       activeColor: 'bg-amber-600 text-white shadow-md shadow-amber-600/20'
     },
     {
+      id: 'csv' as TabType,
+      label: 'CSV 데이터 관리',
+      sublabel: 'Supabase 누적 저장소',
+      icon: Database,
+      color: 'bg-teal-50 text-teal-700 border-teal-200 hover:bg-teal-100/70',
+      activeColor: 'bg-teal-600 text-white shadow-md shadow-teal-600/20'
+    },
+    {
       id: 'contacts' as TabType,
       label: '사내 FAQ 및 연락처',
       sublabel: '자주 묻는 질문 및 담당자 안내',
@@ -51,7 +59,7 @@ export const SidebarTabs: React.FC<SidebarTabsProps> = ({
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-8">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = activeTab === tab.id;
