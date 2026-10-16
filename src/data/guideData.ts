@@ -2,117 +2,131 @@ import { CoreValue, BenefitItem, OfficeFacility, FaqItem, ContactItem, TodoItem 
 
 export const CORE_VALUES: CoreValue[] = [
   {
-    title: '자율과 책임 (Autonomy & Responsibility)',
-    subtitle: '스스로 주도하고 결과에 책임집니다',
-    description: '업무의 방식과 과정을 스스로 고민하고 결정하며, 그에 따른 투명한 소통과 결과를 만들어갑니다.',
+    title: '차별화된 소재',
+    subtitle: '',
+    description: '고객의 사업 성공을 위한 최적의 소재 제공하고 가격, 품질 면에서 경쟁사들을 능가하는 소재와 고객 제품의 성능을 향상시키는 핵심 소재를 제공하는 것',
+    iconName: 'ShieldCheck'
+  },
+  {
+    title: '솔루션',
+    subtitle: '',
+    description: '제품과 서비스, 기술적 지식을 결합하여 고객의 개별적 니즈에 맞춤화된 가치를 제공하는 것',
     iconName: 'Compass'
   },
   {
-    title: '속도와 본질 (Speed & Essence)',
-    subtitle: '핵심에 집중하고 빠르게 실행합니다',
-    description: '형식에 얽매이지 않고 본질적인 가치에 집중하여 신속하게 시도하고 피드백을 통해 개선합니다.',
-    iconName: 'Zap'
-  },
-  {
-    title: '상호 존중 (Mutual Respect)',
-    subtitle: '다름을 이해하고 경청합니다',
-    description: '동료의 의견을 존중하고 건설적인 피드백을 주고받으며 심리적 안전감을 바탕으로 협업합니다.',
+    title: '고객과 함께 지속 성장',
+    subtitle: '',
+    description: '고객에게 차별화된 소재와 솔루션을 제공함으로써 고객의 발전과 성공을 돕고, 이를 바탕으로 당사도 지속적인 성장을 하는 것',
     iconName: 'Heart'
   },
   {
-    title: '끊임없는 성장 (Continuous Growth)',
-    subtitle: '배움을 즐기고 한계에 도전합니다',
-    description: '새로운 기술과 지식을 적극적으로 습득하며 개인과 회사가 함께 성장하는 문화를 지향합니다.',
-    iconName: 'Sprout'
+    title: '시장선도 기업',
+    subtitle: '',
+    description: '고객의 기대를 뛰어넘는 시장선도 소재 및 솔루션을 제공하는 회사, 구성원들을 존중하고 공정하게 대우하는 회사',
+    iconName: 'Zap'
+  }
+];
+
+export const WAY_OF_WORKS: CoreValue[] = [
+  {
+    title: '고객 중심 업무 수행',
+    subtitle: 'Customer Focused Work',
+    description: '고객의 성장에 기여하고, 고객과 함께 동반 성장',
+    iconName: 'Heart'
+  },
+  {
+    title: '빠르고 강한 실행',
+    subtitle: 'Fast and Powerful Execution',
+    description: '기존과는 다른 새로운 방식으로 혁신하고, 남들과 비교할 수 없는 노력, Detail 한 선행관리를 통해 시장에서 성장하고, 경쟁에서 승리',
+    iconName: 'Zap'
+  },
+  {
+    title: '협업 기반의 Compact 한 조직 구축',
+    subtitle: 'Co-work and Compact Organization',
+    description: '열린 소통과 협업이 일상화 되는 문화를 통해 업무의 효율성 극대화, 작은 시도를 민첩하게 실행하고, 실패를 교훈삼아 지속적으로 성장하고 혁신',
+    iconName: 'Compass'
   }
 ];
 
 export const BENEFITS: BenefitItem[] = [
   {
-    category: '근무 제도',
-    title: '유연근무제 (시차출퇴근)',
-    description: '오전 8시 ~ 10시 사이 자율 출근, 8시간 근무 후 퇴근 (코어타임 11:00 ~ 16:00)'
+    category: '주거지원',
+    title: '주거 지원 제도',
+    description: '기숙사 / 월세지원금 / 주택자금대출'
   },
   {
-    category: '근무 제도',
-    title: '하이브리드 워크',
-    description: '주 3일 출근, 2일 재택근무 운영 (팀별 상황에 따라 탄력 운영)'
+    category: '생활안정',
+    title: '생활 안정 지원',
+    description: '경조금 / 경조휴가 / 소액대출 / 기념일 / 선택적복리후생'
   },
   {
-    category: '건강/복지',
-    title: '종합건강검진 지원',
-    description: '매년 본인 및 가족 1인 종합건강검진 연 1회 지원'
+    category: '여가·자기계발',
+    title: '여가 및 자기계발',
+    description: '콘도 / 장기근속 / 어학지원비'
   },
   {
-    category: '건강/복지',
-    title: '복지 포인트 지급',
-    description: '연간 120만 원 상당의 복지 포인트 (도서, 운동, 여가, 쇼핑 등 자유 사용)'
+    category: '학자금',
+    title: '자녀 학자금 지원',
+    description: '유치원비 / 자녀입학축하금 / 자녀학자금(고등학교, 대학교)'
   },
   {
-    category: '성장 지원',
-    title: '도서 및 교육비 무제한 지원',
-    description: '업무 관련 도서 구입비 실비 지원 및 외부 온·오프라인 직무 교육 수강권 제공'
-  },
-  {
-    category: '생활 지원',
-    title: '조식 및 간식 바 운영',
-    description: '사내 카페테리아에서 신선한 샐러드, 샌드위치, 프리미엄 원두커피 및 간식 상시 제공'
+    category: '의료',
+    title: '의료 및 건강 지원',
+    description: '의료비(본인, 배우자, 자녀, 부모) / 종합검진 / 단체정기보험'
   }
 ];
 
 export const SEOUL_OFFICE_INFO = {
-  name: '서울 본사 (테헤란로 센터)',
-  address: '서울특별시 강남구 테헤란로 123, 인스파이어 타워 12층 ~ 14층 (역삼동)',
+  name: 'LX MMA 서울 본사 / R&D 센터',
+  address: '서울특별시 중구 통일로 92, LG서울역빌딩 (남대문로5가)',
   transport: {
-    subway: '2호선 역삼역 3번 출구 도보 3분 거리 / 2호선·분당선 선릉역 도보 7분 거리',
-    bus: '역삼역 포스코 P&S타워 정류장 하차 (간선 146, 360, 740 / 지선 3412)'
+    subway: '1·4호선 서울역 10번 출구 지하 연결 통로 도보 2분 거리',
+    bus: '서울역버스환승센터 및 연세로 정류장 하차 (간선 100, 150, 402, 502)'
   },
   wifi: {
-    ssid: 'Inspire_Welcome (방문자용) / Inspire_Office_5G (사내 임직원용)',
-    password: '사내 인트라넷(Wikit) 또는 IT 데스크 문의'
+    ssid: 'LX_MMA_Guest (방문자용) / LX_MMA_Secure (임직원 보안망)',
+    password: '사내 인트라넷(LX Portal) 또는 IT 서비스데스크 문의'
   },
   parking: {
-    rule: '지하 2층 ~ 지하 4층 임직원 주차장 이용 가능',
-    support: '입사 첫 달 주차 등록 시 월 정기 주차 할인 적용 (방문객은 안내데스크 사전 등록 시 2시간 무료)'
+    rule: 'LG서울역빌딩 지하 주차장 이용 가능 (임직원 등록 차량)',
+    support: '입사 첫 달 주차 등록 지원 (방문객은 안내데스크 사전 등록 시 2시간 무료 주차)'
   }
 };
 
 export const OFFICE_FACILITIES: OfficeFacility[] = [
   {
-    floor: '14층',
-    name: '경영지원본부 및 임원실',
-    description: '대표이사실, 인사팀, 재무팀 및 대회의실',
-    details: ['아이리스 회의실 (12인용)', '로즈마리 회의실 (8인용)', '집중 업무 부스']
+    floor: '18층',
+    name: '경영진 및 대표이사실 / 경영지원본부',
+    description: 'CEO실, 인사팀, 재무팀 및 대회의실',
+    details: ['서울역 대회의실 (24인용)', '미팅룸 A/B', '임원 접견실']
   },
   {
-    floor: '13층',
-    name: '핵심 개발 및 프로덕트 본부',
-    description: '개발팀, 디자인팀, 기획팀 오픈형 오피스 및 스크럼 룸',
-    details: ['스튜디오 A/B (디자인 워크숍)', '포커스 존 (정숙 구역)', '스탠딩 데스크 존']
+    floor: '17층',
+    name: 'MMA 영업 및 마케팅 본부',
+    description: '국내영업팀, 해외수출팀, 마케팅기획실',
+    details: ['오픈 워크스페이스', '글로벌 화상 회의실', '포커스 부스']
   },
   {
-    floor: '12층',
-    name: '종합 안내 및 웰컴 라운지 (카페테리아)',
-    description: '안내데스크, 타운홀 미팅룸, 사내 카페 및 휴게 공간',
-    details: ['인스파이어 라운지 (안마의자 및 빈백)', '오픈 카페테리아 (제빙기, 커피머신)', '우편함 및 택배 보관소']
+    floor: '16층',
+    name: '연구개발(R&D) 및 기술지원실',
+    description: '고분자 화학 연구실, 기술서비스(TS) 팀',
+    details: ['화학 분석실', '테크 라운지', '스마트 프린팅 존']
+  },
+  {
+    floor: '15층',
+    name: '웰컴 라운지 및 사내 식당 / 카페테리아',
+    description: '임직원 식당, 프리미엄 바리스타 카페, 피트니스 및 휴게 공간',
+    details: ['LX MMA 가든 (휴게 라운지)', '사내 카페테리아', '종합 안내데스크']
   }
 ];
 
 export const INITIAL_TODOS: TodoItem[] = [
   // Day 1
   {
-    id: 'd1-1',
-    category: 'day1',
-    title: '사원증 발급 및 출입 등록',
-    description: '12층 안내데스크 방문 후 본인 확인 및 임시 사원증 수령 (증명사진 등록 완료)',
-    completed: false,
-    dueDate: '입사 당일 오전'
-  },
-  {
     id: 'd1-5',
     category: 'day1',
     title: '본인 주소 입력 및 웰컴 키트 배송지 등록',
-    description: '회사에서 발송하는 웰컴 키트 및 기념품 수령을 위한 자택 주소를 입력해주세요.',
+    description: 'LX MMA 웰컴 키트 및 입사 기념품 수령을 위한 자택 주소를 입력해주세요.',
     completed: false,
     dueDate: '입사 당일 오후'
   },
@@ -120,14 +134,14 @@ export const INITIAL_TODOS: TodoItem[] = [
     id: 'd1-2',
     category: 'day1',
     title: 'IT 장비 지급 및 계정 세팅',
-    description: '노트북 및 주변기기 수령, 사내 구글/슬랙/인트라넷 계정 활성화 및 2단계 인증(2FA) 설정',
+    description: '업무용 노트북 수령, 사내 LX포털/메일/협업툴(Teams) 계정 접속으로 2FA 보안 설정',
     completed: false,
     dueDate: '입사 당일 오전'
   },
   {
     id: 'd1-3',
     category: 'day1',
-    title: '웰컴 런치 및 버디(Buddy) 미팅',
+    title: '웰컴 런치 및 부서 버디(Buddy) 미팅',
     description: '소속 팀원들과 함께하는 환영 점심 식사 및 1:1 웰컴 버디 매칭 안내',
     completed: false,
     dueDate: '입사 당일 점심'
@@ -135,8 +149,8 @@ export const INITIAL_TODOS: TodoItem[] = [
   {
     id: 'd1-4',
     category: 'day1',
-    title: '보안 및 정보보호 서약서 제출',
-    description: '개인정보보호 교육 수강 및 사내 보안 규정 서약서 온라인 제출',
+    title: '보안 및 안전환경(EHS) 서약서 제출',
+    description: '화학 사업장 안전환경(EHS) 교육 수강 및 서약서 온라인 제출',
     completed: false,
     dueDate: '입사 당일 오후'
   },
@@ -145,24 +159,24 @@ export const INITIAL_TODOS: TodoItem[] = [
   {
     id: 'w1-1',
     category: 'week1',
-    title: '팀 리더 및 부서원 1:1 오리엔테이션',
-    description: '현재 진행 중인 프로젝트 파악, 주요 업무 롤 및 기대 역할(R&R) 싱크 맞추기',
+    title: '부서장 및 팀원 1:1 오리엔테이션',
+    description: '담당 업무 파악, 주요 프로젝트 브리핑 및 기대 역할(R&R) 싱크 맞추기',
     completed: false,
     dueDate: '입사 첫 주 수요일까지'
   },
   {
     id: 'w1-2',
     category: 'week1',
-    title: '사내 위키(Wikit) 및 문서 가이드 숙지',
-    description: '코딩 컨벤션, 기획 문서 템플릿, 주간 회고 및 공유 문화 살펴보기',
+    title: '사내 인트라넷(LX Portal) 가이드 숙지',
+    description: '화학 규정, 결재 양식, 문서 보안 규정 및 사내 커뮤니케이션 채널 확인',
     completed: false,
     dueDate: '입사 첫 주 금요일까지'
   },
   {
     id: 'w1-3',
     category: 'week1',
-    title: '근태 및 복리후생 시스템 등록',
-    description: '휴가 신청, 복지 포인트 신청, 경비 정산 시스템(BizExp) 계정 및 사용법 숙지',
+    title: '온라인 법정 의무 교육 이수',
+    description: '성희롱 예방, 개인정보보호, 직장 내 괴롭힘 방지 등 필수 교육 수강',
     completed: false,
     dueDate: '입사 첫 주 금요일까지'
   },
@@ -171,84 +185,48 @@ export const INITIAL_TODOS: TodoItem[] = [
   {
     id: 'm1-1',
     category: 'month1',
-    title: '첫 온보딩 프로젝트 완료 및 리뷰',
-    description: '입사 후 첫 단독 업무 또는 팀 협업 태스크 완수 후 버디 및 리더와 회고',
+    title: '신규입사자 멘토링 프로그램 참여',
+    description: '지정 멘토와의 월간 리뷰 미팅 및 회사 적응 상황 점검',
     completed: false,
-    dueDate: '입사 3주차'
+    dueDate: '입사 1개월 차'
   },
   {
     id: 'm1-2',
     category: 'month1',
-    title: '신규 입사자 타운홀 / 교육 세션 참석',
-    description: '대표이사 및 경영진과의 질의응답 세션 및 전사 비전 공유 타운홀 참석',
+    title: '수습 기간 과제 점검 및 피드백 세션',
+    description: '부서장과의 1개월 종합 피드백 면담 및 향후 목표 설정',
     completed: false,
-    dueDate: '월말'
-  },
-  {
-    id: 'm1-3',
-    category: 'month1',
-    title: '30일 수습 평가 및 정착 면담',
-    description: '피플팀(HR) 및 소속 리더와 함께 한 달간의 적응 과정 점검 및 피드백 교환',
-    completed: false,
-    dueDate: '입사 30일 차'
+    dueDate: '입사 1개월 차 말일'
   }
 ];
 
-export const FAQ_LIST: FaqItem[] = [
+export const FAQ_ITEMS: FaqItem[] = [
   {
-    category: '근태/휴가',
-    question: '지각이나 조퇴 시 어디에 알려야 하나요?',
-    answer: '사내 슬랙 #notice-attend 채널 또는 팀 채널에 공유하고, 사내 근태 시스템(HR system)에 사전 또는 사후 신청해주시면 됩니다.'
+    category: '출근 및 복장',
+    question: '출근 시 복장',
+    answer: '스마트 캐주얼(단정한 비즈니스 캐주얼) 복장으로 오전 8시 30분까지 출근해 주시면 됩니다.'
   },
   {
-    category: '근태/휴가',
-    question: '휴가는 언제부터 사용할 수 있나요?',
-    answer: '입사일 기준 발생한 연차 휴가는 입사 당일부터 즉시 사용 가능합니다. (반차, 연차 등 최소 1일 전 팀 내 공유 필수)'
+    category: '근무 제도',
+    question: '출퇴근 시간 및 근무 제도',
+    answer: '부서장 사전 협의 하에 출퇴근 시간을 조절할 수 있는 FLEXTIME 제도를 운영하고 있습니다.'
   },
   {
-    category: '근무/장비',
-    question: '추가 모니터나 키보드 등 주변기기가 필요해요.',
-    answer: 'IT 서포트 포털(IT Helpdesk)을 통해 신청하시면 1~2일 내로 자리로 배송 및 설치를 도와드립니다.'
-  },
-  {
-    category: '식대/복지',
-    question: '점심 식사 지원은 어떻게 되나요?',
-    answer: '12층 사내 카페테리아에서 중식 샐러드바 및 도시락이 무료 제공되며, 외부 식당 이용 시 법인카드 또는 모바일 식권(식권대장)을 통해 일 12,000원까지 지원됩니다.'
-  },
-  {
-    category: '소통',
-    question: '주요 사내 메신저 및 협업 툴은 무엇인가요?',
-    answer: '모든 공식 커뮤니케이션은 Slack(슬랙)을 통해 이루어지며, 문서 협업은 Notion 및 Google Workspace를 사용합니다.'
+    category: '급여 및 복지',
+    question: '급여 지급일은 언제인가요?',
+    answer: '매월 25일에 지급됩니다. (토요일 또는 공휴일인 경우 그 전일에 지급됩니다.)'
   }
 ];
 
-export const CONTACT_LIST: ContactItem[] = [
+export const CONTACT_ITEMS: ContactItem[] = [
   {
-    department: '인사/채용 (People Team)',
-    name: '김지은 팀장',
-    role: '온보딩 및 인사 관리 전반',
-    email: 'jieun.kim@inspire.co.kr',
-    extension: '02-555-0121'
-  },
-  {
-    department: '총무/시설 (Admin Team)',
-    name: '박민수 매니저',
-    role: '사무실 시설, 자리 배치, 사원증',
-    email: 'minsu.park@inspire.co.kr',
-    extension: '02-555-0122'
-  },
-  {
-    department: 'IT 인프라 (IT Support)',
-    name: '이도현 엔지니어',
-    role: 'PC 지급, 네트워크, 계정 권한',
-    email: 'it.support@inspire.co.kr',
-    extension: '02-555-0199'
-  },
-  {
-    department: '재무/회계 (Finance)',
-    name: '최유진 파트장',
-    role: '법인카드, 경비 청구, 급여 관련',
-    email: 'finance@inspire.co.kr',
-    extension: '02-555-0133'
+    department: '인사팀',
+    name: '김인사 사원',
+    role: '채용 및 온보딩 총괄',
+    email: 'hr@lxmma.com',
+    extension: '02-6930-0000'
   }
 ];
+
+export const FAQ_LIST = FAQ_ITEMS;
+export const CONTACT_LIST = CONTACT_ITEMS;

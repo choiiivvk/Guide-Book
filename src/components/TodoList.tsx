@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TodoItem } from '../types';
 import { INITIAL_TODOS } from '../data/guideData';
-import { CheckSquare, Plus, Trash2, Calendar, CheckCircle, Sparkles, Filter, RotateCcw } from 'lucide-react';
+import { CheckSquare, Plus, Trash2, Calendar, CheckCircle, Sparkles, Filter, RotateCcw, Edit2 } from 'lucide-react';
 
 export const TodoList: React.FC<{
   onUpdateCount: (completed: number, total: number) => void;
@@ -10,7 +10,17 @@ export const TodoList: React.FC<{
     const saved = localStorage.getItem('onboarding_todos');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        let parsed = JSON.parse(saved);
+        parsed = parsed.filter((t: TodoItem) => t.id !== 'd1-1');
+        parsed = parsed.map((t: TodoItem) => {
+          if (t.id === 'd1-2') {
+            return { ...t, description: '업무용 노트북 수령, 사내 LX포털/메일/협업툴(Teams) 계정 접속으로 2FA 보안 설정' };
+          }
+          return t;
+        });
+        // Remove m1-3 if previously added
+        parsed = parsed.filter((t: TodoItem) => t.id !== 'm1-3');
+        return parsed;
       } catch (e) {
         console.error(e);
       }
@@ -23,6 +33,13 @@ export const TodoList: React.FC<{
   const [newCategory, setNewCategory] = useState<'day1' | 'week1' | 'month1'>('day1');
   const [newDueDate, setNewDueDate] = useState('');
   const [isAdding, setIsAdding] = useState(false);
+
+  // Editing state
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editCategory, setEditCategory] = useState<'day1' | 'week1' | 'month1'>('day1');
+  const [editDueDate, setEditDueDate] = useState('');
 
   const [userAddress, setUserAddress] = useState<string>(() => {
     return localStorage.getItem('onboarding_user_address') || '';
@@ -44,11 +61,40 @@ export const TodoList: React.FC<{
   }, [todos, onUpdateCount]);
 
   const toggleTodo = (id: string) => {
+    if (editingId === id) return;
     setTodos(todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
   };
 
   const deleteTodo = (id: string) => {
     setTodos(todos.filter(t => t.id !== id));
+  };
+
+  const startEditing = (todo: TodoItem, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingId(todo.id);
+    setEditTitle(todo.title);
+    setEditDescription(todo.description || '');
+    setEditCategory(todo.category);
+    setEditDueDate(todo.dueDate || '');
+  };
+
+  const saveEditing = (id: string, e: React.FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!editTitle.trim()) return;
+    setTodos(todos.map(t => t.id === id ? {
+      ...t,
+      title: editTitle.trim(),
+      description: editDescription.trim(),
+      category: editCategory,
+      dueDate: editDueDate.trim()
+    } : t));
+    setEditingId(null);
+  };
+
+  const cancelEditing = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingId(null);
   };
 
   const handleAddTodo = (e: React.FormEvent) => {
@@ -98,37 +144,34 @@ export const TodoList: React.FC<{
       {/* Header & Stats Banner */}
       <div className="bg-gradient-to-br from-amber-50/95 via-orange-50/40 to-white border border-amber-200/80 rounded-3xl p-8 shadow-sm relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold mb-3">
-              <CheckSquare className="w-3.5 h-3.5 text-amber-600" />
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-900 text-xs font-semibold border border-amber-500/30">
+              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
               <span>Onboarding Checklist</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight mb-2">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
               신규입사자 필수 To-do List
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              입사 후 단계별로 진행해야 할 필수 업무를 체크하고 완수해 보세요. 
-              체크한 내용은 브라우저에 안전하게 저장됩니다.
+            <p className="text-slate-600 text-sm max-w-xl leading-relaxed">
+              성공적인 조직 적응을 위해 입사 단계별로 완수해야 할 필수 과제들입니다. 항목별 진행 상황을 체크해 보세요.
             </p>
           </div>
 
-          <div className="bg-white/90 border border-amber-200 rounded-2xl p-5 shadow-sm min-w-[260px]">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-xs font-bold text-slate-700">전체 달성률</span>
-              <span className="text-sm font-extrabold text-amber-600">{completedCount} / {totalCount} 완료 ({percent}%)</span>
+          {/* Progress Widget */}
+          <div className="bg-white/90 backdrop-blur-sm border border-amber-200/80 rounded-2xl p-5 shadow-xs w-full md:w-64 flex flex-col gap-3">
+            <div className="flex items-center justify-between text-xs font-bold">
+              <span className="text-slate-600">전체 달성률</span>
+              <span className="text-amber-700 text-sm">{percent}%</span>
             </div>
-            <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5 border border-slate-200/60">
-              <div
-                className="bg-gradient-to-r from-amber-400 to-emerald-500 h-2 rounded-full transition-all duration-500"
+            <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+              <div 
+                className="bg-gradient-to-r from-amber-500 to-amber-600 h-full transition-all duration-500 rounded-full"
                 style={{ width: `${percent}%` }}
               ></div>
             </div>
-            {percent === 100 && (
-              <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg w-full justify-center border border-emerald-200">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>모든 온보딩 미션을 완수하셨습니다! 축하합니다!</span>
-              </div>
-            )}
+            <div className="text-right text-[11px] text-slate-500 font-medium">
+              완료 <strong>{completedCount}</strong> / 전체 {totalCount}개
+            </div>
           </div>
         </div>
       </div>
@@ -253,6 +296,83 @@ export const TodoList: React.FC<{
         ) : (
           filteredTodos.map((todo) => {
             const catInfo = categoryLabels[todo.category] || categoryLabels.day1;
+            const isEditing = editingId === todo.id;
+
+            if (isEditing) {
+              return (
+                <form
+                  key={todo.id}
+                  onSubmit={(e) => saveEditing(todo.id, e)}
+                  onClick={(e) => e.stopPropagation()}
+                  className="bg-amber-50/90 border border-amber-300 rounded-2xl p-5 shadow-md space-y-4 animate-fadeIn"
+                >
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-bold text-slate-800 text-sm flex items-center gap-1.5">
+                      <Edit2 className="w-4 h-4 text-amber-700" />
+                      <span>할 일 항목 수정</span>
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">제목</label>
+                      <input
+                        type="text"
+                        value={editTitle}
+                        onChange={(e) => setEditTitle(e.target.value)}
+                        className="w-full px-3 py-2 rounded-xl bg-white border border-amber-200 text-xs text-slate-800 focus:outline-none"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-600 mb-1">단계</label>
+                      <select
+                        value={editCategory}
+                        onChange={(e) => setEditCategory(e.target.value as any)}
+                        className="w-full px-3 py-2 rounded-xl bg-white border border-amber-200 text-xs text-slate-800 focus:outline-none"
+                      >
+                        <option value="day1">Day 1 (입사 첫날)</option>
+                        <option value="week1">Week 1 (첫 주 적응)</option>
+                        <option value="month1">Month 1 (한 달 완성)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">상세 설명</label>
+                    <input
+                      type="text"
+                      value={editDescription}
+                      onChange={(e) => setEditDescription(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-amber-200 text-xs text-slate-800 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1">권장 기한</label>
+                    <input
+                      type="text"
+                      value={editDueDate}
+                      onChange={(e) => setEditDueDate(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-white border border-amber-200 text-xs text-slate-800 focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex justify-end gap-2 pt-1">
+                    <button
+                      type="button"
+                      onClick={cancelEditing}
+                      className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-medium text-slate-600 hover:bg-slate-50"
+                    >
+                      취소
+                    </button>
+                    <button
+                      type="submit"
+                      className="px-3 py-1.5 rounded-xl bg-amber-600 text-white text-xs font-medium hover:bg-amber-700 shadow-xs"
+                    >
+                      저장
+                    </button>
+                  </div>
+                </form>
+              );
+            }
+
             return (
               <div
                 key={todo.id}
@@ -337,18 +457,25 @@ export const TodoList: React.FC<{
                   )}
                 </div>
 
-                {/* Delete button for custom or all */}
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    deleteTodo(todo.id);
-                  }}
-                  className="text-slate-300 hover:text-red-500 p-1.5 rounded-lg transition-colors"
-                  title="항목 삭제"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
+                {/* Edit & Delete buttons */}
+                <div className="flex items-center gap-1 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    type="button"
+                    onClick={(e) => startEditing(todo, e)}
+                    className="text-slate-300 hover:text-amber-600 p-1.5 rounded-lg transition-colors"
+                    title="항목 수정"
+                  >
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => deleteTodo(todo.id)}
+                    className="text-slate-300 hover:text-red-500 p-1.5 rounded-lg transition-colors"
+                    title="항목 삭제"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             );
           })

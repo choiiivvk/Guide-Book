@@ -1,4 +1,4 @@
-export type TabType = 'company' | 'office' | 'todo' | 'contacts' | 'csv';
+export type TabType = 'company' | 'joining' | 'manner' | 'todo' | 'contacts';
 
 export interface TodoItem {
   id: string;

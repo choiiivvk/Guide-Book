@@ -16,10 +16,10 @@ export const FaqContacts: React.FC = () => {
     <div className="space-y-12 animate-fadeIn">
       
       {/* Header Banner */}
-      <div className="bg-gradient-to-br from-purple-50/90 via-indigo-50/40 to-white border border-purple-100 rounded-3xl p-8 shadow-sm">
+      <div className="bg-gradient-to-br from-blue-50/90 via-indigo-50/40 to-white border border-blue-100 rounded-3xl p-8 shadow-sm">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold mb-3">
-            <HelpCircle className="w-3.5 h-3.5 text-purple-600" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold mb-3">
+            <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
             <span>FAQ & Important Contacts</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight mb-3">
@@ -35,7 +35,7 @@ export const FaqContacts: React.FC = () => {
       <div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
+            <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
               01
             </div>
             <h3 className="text-xl font-bold text-slate-800">자주 묻는 질문 (FAQ)</h3>
@@ -46,10 +46,10 @@ export const FaqContacts: React.FC = () => {
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="질문 검색 (예: 휴가, 식대...)"
+              placeholder="질문 검색 (예: 복장, 출퇴근...)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-slate-200 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-slate-200 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export const FaqContacts: React.FC = () => {
                     className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50/50 transition-colors"
                   >
                     <div className="flex items-center gap-3 pr-4">
-                      <span className="px-2.5 py-1 rounded-md bg-purple-50 text-purple-700 text-xs font-semibold border border-purple-100 flex-shrink-0">
+                      <span className="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100 flex-shrink-0">
                         {faq.category}
                       </span>
                       <span className="font-bold text-slate-800 text-base">{faq.question}</span>
@@ -97,7 +97,7 @@ export const FaqContacts: React.FC = () => {
       {/* Key Contacts Section */}
       <div>
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold">
+          <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
             02
           </div>
           <h3 className="text-xl font-bold text-slate-800">주요 부서 및 담당자 연락처 (Contacts)</h3>
@@ -107,18 +107,18 @@ export const FaqContacts: React.FC = () => {
           {CONTACT_LIST.map((contact, idx) => (
             <div
               key={idx}
-              className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:border-purple-200 transition-all flex flex-col justify-between"
+              className="bg-white border border-slate-200/80 rounded-2xl p-6 shadow-sm hover:border-blue-200 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-100">
+                  <span className="text-xs font-semibold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100">
                     {contact.department}
                   </span>
                   <PhoneCall className="w-4 h-4 text-slate-400" />
                 </div>
                 
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-purple-100/70 text-purple-700 flex items-center justify-center font-bold">
+                  <div className="w-10 h-10 rounded-full bg-blue-100/70 text-blue-700 flex items-center justify-center font-bold">
                     <User className="w-5 h-5" />
                   </div>
                   <div>
